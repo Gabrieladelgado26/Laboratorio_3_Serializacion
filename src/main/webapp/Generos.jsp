@@ -4,7 +4,6 @@
     Author     : INES CHAR
 --%>
 
-
 <%@page import="com.mycompany.mundo.Archivos"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mycompany.mundo.Video"%>

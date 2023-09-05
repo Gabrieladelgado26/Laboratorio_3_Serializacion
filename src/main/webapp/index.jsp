@@ -1,6 +1,9 @@
-<%-- Document   : Generos 
+<%-- 
+Document   : Generos 
 Created on : 3/09/2023, 8:58:12 a. m. 
-Author     : Gabriela Delgado --%> 
+Author     : Gabriela Delgado 
+--%> 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <!DOCTYPE html> <html> <!DOCTYPE html> 
     <html lang="en"> 
@@ -73,7 +76,7 @@ Author     : Gabriela Delgado --%>
                                 <div class="p-3" style="max-width: 900px;"> 
                                     <h4 class="text-white text-uppercase mb-md-3">ROCKOLA</h4> 
                                     <h1 class="display-3 text-white mb-md-4">La mejor musica en una Rockola</h1> 
-                                    <a href="listarVideo.jsp" class="btn btn-primary py-md-3 px-md-5 mt-2">Ver canciones</a> 
+                                    <a href="listarVideo.jsp" class="btn btn-primary py-md-3 px-md-5 mt-2">Ver videos</a> 
                                 </div> 
                             </div> 
                         </div> 
