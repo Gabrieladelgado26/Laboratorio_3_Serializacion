@@ -1,10 +1,19 @@
 <%-- 
-    Document   : agregarVideo
-    Created on : 2/09/2023, 5:24:35 p. m.
-    Author     : Gabriela Delgado
+    Document   : Generos
+    Created on : 4/09/2023, 8:58:12 a. m.
+    Author     : INES CHAR
 --%>
 
+
+<%@page import="com.mycompany.mundo.Archivos"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.mycompany.mundo.Video"%>
+<%@page import="com.mycompany.mundo.Archivos"%>
+<%@page import="java.io.File"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.mycompany.mundo.Video"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,9 +73,9 @@
                     <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                         <div class="navbar-nav ml-auto py-0">
                             <a href="index.jsp" class="nav-item nav-link">Inicio</a>
-                            <a href="agregarVideo.jsp" class="nav-item nav-link active">Agregar canción</a>
+                            <a href="agregarVideo.jsp" class="nav-item nav-link">Agregar canción</a>
                             <a href="listarVideo.jsp" class="nav-item nav-link">Escuchar canciones</a>
-                            <a href="Generos.jsp" class="nav-item nav-link">Generos</a>
+                            <a href="Generos.jsp" class="nav-item nav-link active">Generos</a>
                         </div>
                     </div>
                 </nav>
@@ -76,53 +85,26 @@
         <div class="container-fluid page-header">
             <div class="container">
                 <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
-                    <h3 class="display-4 text-white text-uppercase">Agregar canción</h3>
+                    <h3 class="display-4 text-white text-uppercase">Generos</h3>
                     <div class="d-inline-flex text-white">
                         <p class="m-0 text-uppercase"><a class="text-white" href="">Inicio</a></p>
                         <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                        <p class="m-0 text-uppercase">Agregar canción</p>
+                        <p class="m-0 text-uppercase">Generos</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <form action ="SvVideo" method = "POST">
+        <form action ="SvVideo" method = "get">
             <div class="container-fluid booking mt-5 pb-5">
                 <div class="container pb-5">
                     <div class="bg-light shadow" style="padding: 30px;">
                         <div class="row align-items-center" style="min-height: 60px;">
-                            <div class="col-md-10">
+                            <div class="col-md-7">
                                 <div class="row">
-                                    <div class="col-md-3">
-                                        <div>
-                                            <input type="text" class="form-control p-4" name="idVideo" id="idVideo" placeholder="Id video"
-                                                   required="required" data-validation-required-message="Porfavor escriba el id de la canción" />
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div>
-                                            <input type="text" class="form-control p-4" name="titulo" id="titulo" placeholder="Titulo"
-                                                   required="required" data-validation-required-message="Porfavor escriba el titulo de la canción" />
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div>
-                                            <input type="text" class="form-control p-4" name="autor" id="autor" placeholder="Autor"
-                                                   required="required" data-validation-required-message="Porfavor escriba el autor de la canción" />
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3 mb-md-0">
-                                            <div class="date" name="anio" id="anio" data-target-input="nearest">
-                                                <input type="text" class="form-control p-4 datetimepicker-input" name="anio" placeholder="Año" data-target="#date1" data-toggle="datetimepicker"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="mb-3 mb-md-0">
+                                    <div class="col-md-8">
+                                        <div class="mb-5 mb-md-0">
+                                            <center>
                                             <select class="custom-select px-4" name="categoria" id="categoria" style="height: 47px;">
                                                 <option selected>Categoria</option>
                                                 <option value="Rock">Rock</option>
@@ -130,32 +112,64 @@
                                                 <option value="Salsa">Salsa</option>
                                                 <option value="Electronica">Electronica</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div>
-                                            <textarea type="text" class="form-control p-4" name="url" id="url" placeholder="URL"
-                                                      required="required" data-validation-required-message="Porfavor escriba la URL de la canción"></textarea>
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div>
-                                            <textarea type="text" class="form-control p-4" name="letra" id="letra" placeholder="Letra"
-                                                      required="required" data-validation-required-message="Porfavor escriba la letra de la canción"></textarea>
-                                            <p class="help-block text-danger"></p>
+                                            </center>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Agregar</button>
+                                <center>
+                                <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Buscar</button>
                                 <a href='index.jsp' class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: 20px;">Regresar</a>
+                                </center>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
+        <div class="container-fluid py-5">
+            <div class="container pt-5 pb-3">
+                <div class="text-center mb-3 pb-3">
+                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Todas las canciones de tu genero favorito</h6>
+                    <h1>Canciones</h1>
+                </div>
+                <div class="row">
+                    
+                        <%
+                            ArrayList <Video> misVideos = Archivos.leerArchivo();
+                            String categoria;
+                            if(request.getAttribute("categoria") != null){
+                                categoria = request.getAttribute("categoria").toString();
+                            }else{
+                                categoria = "";
+                            }
+                            
+                            for (Video v : misVideos) {
+                                if((categoria.equals(v.getCategoria())) || (categoria.equals(""))){
+                                    out.println("<div class=´'col-lg-4 col-md-6 mb-4' style='margin-right: 30px;'>");
+                                        out.println("<div class='service-item bg-white text-center mb-2 py-5 px-4'>");
+                                            out.println("<iframe width='300' height='169' src='https://www.youtube.com/embed/"+v.getUrl().replace("https://www.youtube.com/watch?v=", "")+"' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>");
+                                            out.println("<p class='m-0'>idVideo: " + v.getIdVideo() + "</p>");
+                                            out.println("<h5 class='mb-2'>"+ v.getTitulo() +"</h5>");
+                                            out.println("<p class='m-0'>Autor: " + v.getAutor() + "</p>");
+                                            out.println("<p class='m-0'>Año: " + v.getAnio() + "</p>");
+                                            out.println("<p class='m-0'>Categoria: " + v.getCategoria() + "</p>");
+                                            out.println("<p class='m-0'>Letra: " + v.getLetra() + "</p>");
+
+                                            out.println("<a href='" + v.getUrl() + "' target='_blank' class='btn btn-primary py-md-3 px-md-5 mt-2'>Ir al video</a>");
+                                        out.println("</div>");
+                                    out.println("</div>");
+                                }
+                            }
+                        %>
+                    
+                </div>
+            </div>
+        </div>
+        <center>
+            <a href='index.jsp' class='btn btn-primary py-md-3 px-md-5 mt-2'style="min-height: 60px" style='margin-right: 30px;'>Regresar</a>
+            <a href='agregarVideo.jsp' class='btn btn-primary py-md-3 px-md-5 mt-2' style="min-height: 60px">Agregar video</a>
+        </center>
     </body>
 </html>
