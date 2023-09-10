@@ -3,33 +3,31 @@ package com.mycompany.mundo;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import javax.ws.rs.Path;
 
 public class Archivos {
 
     /**
-     * Metodo escribir archivo para serializacion
+     * Metodo de escribirArchivo para persistencia
      * @param misVideos
-     * @throws FileNotFoundException
-     * @throws IOException 
+     * @throws FileNotFoundException 
      */
-    public static void escribirArchivo(ArrayList<Video> misVideos) throws FileNotFoundException, IOException {
+    public static void escribirArchivo(ArrayList<Video> misVideos) throws FileNotFoundException {
 
         // Creando el archivo
         File archivo = new File("videosAgregad.txt");
 
-        try (FileOutputStream fileOutputStream = new FileOutputStream(archivo);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
-            // Serializar y escribir cada objeto Video en el archivo
+        // Pluma para escribir en el archivo
+        try (PrintWriter pluma = new PrintWriter(archivo)) {
+            // Iterar a través del listado de videos y escribir sus datos en el archivo
             for (Video v : misVideos) {
-                objectOutputStream.writeObject(v);
+                // Formatear los datos del video en una cadena de caracteres y escribir en el archivo
+                String cadenaCaracteres = v.getIdVideo() + "," + v.getTitulo() + "," + v.getAutor() + "," + v.getAnio() + ","
+                                          + v.getCategoria() + "," + v.getUrl() + "," + v.getLetra();
+                pluma.println(cadenaCaracteres);
             }
         // Atrapa excepciones en caso de encontrar el archivo
         } catch (FileNotFoundException e) {
@@ -78,10 +76,10 @@ public class Archivos {
             }
         }
     }
-    
+
     /**
      * Sobrecarga o polimorfismo
-     * @return
+     * @return Array List misVideos
      * @throws FileNotFoundException
      * @throws IOException 
      */
