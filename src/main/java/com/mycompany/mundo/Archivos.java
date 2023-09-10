@@ -18,7 +18,7 @@ public class Archivos {
     public static void escribirArchivo(ArrayList<Video> misVideos) throws FileNotFoundException {
 
         // Creando el archivo
-        File archivo = new File("videosAgregad.txt");
+        File archivo = new File("videosRegistrados.txt");
 
         // Pluma para escribir en el archivo
         try (PrintWriter pluma = new PrintWriter(archivo)) {
@@ -44,7 +44,7 @@ public class Archivos {
     public static void leerArchivo(ArrayList<Video> misVideos) throws FileNotFoundException, IOException {
 
         // Crea el archivo
-        File archivo = new File("videosAgregad.txt");
+        File archivo = new File("videosRegistrados.txt");
         System.out.println("archivo" + archivo.length());
         
         // Si el archivo no esta vacio entra a leerlo
@@ -89,7 +89,7 @@ public class Archivos {
         ArrayList<Video> misVideos = new ArrayList<Video>();
 
         // Creamos el archivo en una ruta especifica
-        File archivo = new File("videosAgregad.txt");
+        File archivo = new File("videosRegistrados.txt");
         System.out.println(archivo.length());
         if (archivo.length() > 10) {
             try (FileReader leerArchivo = new FileReader(archivo); 
