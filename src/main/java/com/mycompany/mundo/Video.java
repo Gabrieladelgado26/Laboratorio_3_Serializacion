@@ -1,6 +1,8 @@
 package com.mycompany.mundo;
 
-public class Video {
+import java.io.Serializable;
+
+public class Video implements Serializable {
     
     // Atributos
     private int idVideo;
