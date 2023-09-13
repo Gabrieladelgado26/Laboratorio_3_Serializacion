@@ -63,9 +63,10 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="index.jsp" class="nav-item nav-link">Inicio</a>
-                            <a href="agregarVideo.jsp" class="nav-item nav-link active">Agregar canción</a>
-                            <a href="listarVideo.jsp" class="nav-item nav-link">Escuchar canciones</a>
+                            <!-- Enlaces del menú superior que dirigen a las paginas inico, agregar canción, ver videos ogeneros -->
+                            <a href="index.jsp" class="nav-item nav-link">Inicio</a> 
+                            <a href="agregarVideo.jsp" class="nav-item nav-link active">Agregar video</a> 
+                            <a href="listarVideo.jsp" class="nav-item nav-link">Ver videos</a> 
                             <a href="Generos.jsp" class="nav-item nav-link">Generos</a>
                         </div>
                     </div>
@@ -93,8 +94,10 @@
                         <div class="row align-items-center" style="min-height: 60px;">
                             <div class="col-md-10">
                                 <div class="row">
+                                    <!-- Cajas de texto donde se añadira toda la información del video agregado -->
                                     <div class="col-md-3">
                                         <div>
+                                            <!-- Recibe los datos que digite el usuario con relación al id del video -->
                                             <input type="text" class="form-control p-4" name="idVideo" id="idVideo" placeholder="Id video"
                                                    required="required" data-validation-required-message="Porfavor escriba el id de la canción" />
                                             <p class="help-block text-danger"></p>
@@ -102,6 +105,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div>
+                                            <!-- Recibe los datos que digite el usuario con relación al título del video -->
                                             <input type="text" class="form-control p-4" name="titulo" id="titulo" placeholder="Titulo"
                                                    required="required" data-validation-required-message="Porfavor escriba el titulo de la canción" />
                                             <p class="help-block text-danger"></p>
@@ -109,6 +113,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div>
+                                            <!-- Recibe los datos que digite el usuario con relación al autor del video -->
                                             <input type="text" class="form-control p-4" name="autor" id="autor" placeholder="Autor"
                                                    required="required" data-validation-required-message="Porfavor escriba el autor de la canción" />
                                             <p class="help-block text-danger"></p>
@@ -116,11 +121,13 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mb-3 mb-md-0">
+                                            <!-- Recibe los datos que digite el usuario con relación al año de publicación del video -->
                                             <div class="date" name="anio" id="anio" data-target-input="nearest">
                                                 <input type="text" class="form-control p-4 datetimepicker-input" name="anio" placeholder="Año" data-target="#date1" data-toggle="datetimepicker"/>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Menú desplegable para que cuando se agregue un video se pueda elegir la categoria de este  -->
                                     <div class="col-md-3">
                                         <div class="mb-3 mb-md-0">
                                             <select class="custom-select px-4" name="categoria" id="categoria" style="height: 47px;">
@@ -134,6 +141,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div>
+                                            <!-- Recibe los datos que digite el usuario con relación a la url del video -->
                                             <textarea type="text" class="form-control p-4" name="url" id="url" placeholder="URL"
                                                       required="required" data-validation-required-message="Porfavor escriba la URL de la canción"></textarea>
                                             <p class="help-block text-danger"></p>
@@ -141,6 +149,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div>
+                                            <!-- Recibe los datos que digite el usuario con relación a la letra del video -->
                                             <textarea type="text" class="form-control p-4" name="letra" id="letra" placeholder="Letra"
                                                       required="required" data-validation-required-message="Porfavor escriba la letra de la canción"></textarea>
                                             <p class="help-block text-danger"></p>
@@ -149,6 +158,7 @@
                                 </div>
                             </div>
                             <div class="col-md-2">
+                                <!-- Botón que culmina la tarea de agregar el video -->
                                 <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Agregar</button>
                                 <a href='index.jsp' class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: 20px;">Regresar</a>
                             </div>

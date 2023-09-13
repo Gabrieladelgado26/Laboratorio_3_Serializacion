@@ -71,9 +71,10 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="index.jsp" class="nav-item nav-link">Inicio</a>
-                            <a href="agregarVideo.jsp" class="nav-item nav-link">Agregar canción</a>
-                            <a href="listarVideo.jsp" class="nav-item nav-link active">Escuchar canciones</a>
+                            <!-- Enlaces del menú superior que dirigen a las paginas inico, agregar canción, ver videos ogeneros -->
+                            <a href="index.jsp" class="nav-item nav-link">Inicio</a> 
+                            <a href="agregarVideo.jsp" class="nav-item nav-link">Agregar video</a> 
+                            <a href="listarVideo.jsp" class="nav-item nav-link active">Ver videos</a> 
                             <a href="Generos.jsp" class="nav-item nav-link">Generos</a>
                         </div>
                     </div>
@@ -101,33 +102,37 @@
                     <h1>Canciones</h1>
                 </div>
                 <div class="row">
-                    
-                        <%
-                            ArrayList <Video> misVideos = Archivos.leerArchivo();
+                    <%
+                        // LLamado al metodo leerArchivo de tipo ArrayList<Video> de la clase Archivos para mostrar los videos agregados en un listado de videos -->
+                        ArrayList<Video> misVideos = Archivos.leerArchivo();
 
-                            for (Video v : misVideos) {
-                                out.println("<div class=´'col-lg-4 col-md-6 mb-4' style='margin-right: 30px;'>");
-                                    out.println("<div class='service-item bg-white text-center mb-2 py-5 px-4'>");
-                                        out.println("<iframe width='300' height='169' src='https://www.youtube.com/embed/"+v.getUrl().replace("https://www.youtube.com/watch?v=", "")+"' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>");
-                                        out.println("<p class='m-0'>idVideo: " + v.getIdVideo() + "</p>");
-                                        out.println("<h5 class='mb-2'>"+ v.getTitulo() +"</h5>");
-                                        out.println("<p class='m-0'>Autor: " + v.getAutor() + "</p>");
-                                        out.println("<p class='m-0'>Año: " + v.getAnio() + "</p>");
-                                        out.println("<p class='m-0'>Categoria: " + v.getCategoria() + "</p>");
-                                        out.println("<p class='m-0'>Letra: " + v.getLetra() + "</p>");
-                                        
-                                        out.println("<a href='" + v.getUrl() + "' target='_blank' class='btn btn-primary py-md-3 px-md-5 mt-2'>Ir al video</a>");
-                                    out.println("</div>");
-                                out.println("</div>");
-                            }
-                        %>
-                    
+                        // Itera en un ciclo forEach para mostrar todos los videos que se han agregado, los cuales estan en el ArrayList misVideos
+                        for (Video v : misVideos) {
+                            out.println("<div class=´'col-lg-4 col-md-6 mb-4' style='margin-right: 30px;'>");
+                            out.println("<div class='service-item bg-white text-center mb-2 py-5 px-4'>");
+                            out.println("<iframe width='300' height='169' src='https://www.youtube.com/embed/" + v.getUrl().replace("https://www.youtube.com/watch?v=", "") + "' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>");
+                            out.println("<p class='m-0'>idVideo: " + v.getIdVideo() + "</p>");
+                            out.println("<h5 class='mb-2'>" + v.getTitulo() + "</h5>");
+                            out.println("<p class='m-0'>Autor: " + v.getAutor() + "</p>");
+                            out.println("<p class='m-0'>Año: " + v.getAnio() + "</p>");
+                            out.println("<p class='m-0'>Categoria: " + v.getCategoria() + "</p>");
+                            out.println("<p class='m-0'>Letra: " + v.getLetra() + "</p>");
+
+                            out.println("<a href='" + v.getUrl() + "' target='_blank' class='btn btn-primary py-md-3 px-md-5 mt-2'>Ir al video</a>");
+                            out.println("</div>");
+                            out.println("</div>");
+                        }
+                    %>
+
                 </div>
             </div>
         </div>
-        <center>
-            <a href='index.jsp' class='btn btn-primary py-md-3 px-md-5 mt-2'style='margin-right: 30px;'>Regresar</a>
-            <a href='agregarVideo.jsp' class='btn btn-primary py-md-3 px-md-5 mt-2'>Agregar video</a>
-        </center>
-    </body>
+    <center>
+        <!-- Botón que redirige a la página inicial (index) -->
+        <a href='index.jsp' class='btn btn-primary py-md-3 px-md-5 mt-2'style='margin-right: 30px;'>Regresar</a>
+        
+        <!-- Botón que envia a la página de agregarVideo para agregar un nuevo video -->
+        <a href='agregarVideo.jsp' class='btn btn-primary py-md-3 px-md-5 mt-2'>Agregar video</a>
+    </center>
+</body>
 </html>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : Generos
     Created on : 4/09/2023, 8:58:12 a. m.
-    Author     : INES CHAR
+    Author     : Gabriela Delgado
 --%>
 
 <%@page import="com.mycompany.mundo.Archivos"%>
@@ -71,9 +71,10 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="index.jsp" class="nav-item nav-link">Inicio</a>
-                            <a href="agregarVideo.jsp" class="nav-item nav-link">Agregar canción</a>
-                            <a href="listarVideo.jsp" class="nav-item nav-link">Escuchar canciones</a>
+                            <!-- Enlaces del menú superior que dirigen a las paginas inico, agregar canción, ver videos ogeneros -->
+                            <a href="index.jsp" class="nav-item nav-link">Inicio</a> 
+                            <a href="agregarVideo.jsp" class="nav-item nav-link">Agregar video</a> 
+                            <a href="listarVideo.jsp" class="nav-item nav-link">Ver videos</a> 
                             <a href="Generos.jsp" class="nav-item nav-link active">Generos</a>
                         </div>
                     </div>
@@ -104,13 +105,13 @@
                                     <div class="col-md-8">
                                         <div class="mb-5 mb-md-0">
                                             <center>
-                                            <select class="custom-select px-4" name="categoria" id="categoria" style="height: 47px;">
-                                                <option selected>Categoria</option>
-                                                <option value="Rock">Rock</option>
-                                                <option value="Pop">Pop</option>
-                                                <option value="Salsa">Salsa</option>
-                                                <option value="Electronica">Electronica</option>
-                                            </select>
+                                                <select class="custom-select px-4" name="categoria" id="categoria" style="height: 47px;">
+                                                    <option selected>Categoria</option>
+                                                    <option value="Rock">Rock</option>
+                                                    <option value="Pop">Pop</option>
+                                                    <option value="Salsa">Salsa</option>
+                                                    <option value="Electronica">Electronica</option>
+                                                </select>
                                             </center>
                                         </div>
                                     </div>
@@ -118,8 +119,8 @@
                             </div>
                             <div class="col-md-2">
                                 <center>
-                                <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Buscar</button>
-                                <a href='index.jsp' class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: 20px;">Regresar</a>
+                                    <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Buscar</button>
+                                    <a href='index.jsp' class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: 20px;">Regresar</a>
                                 </center>
                             </div>
                         </div>
@@ -134,41 +135,47 @@
                     <h1>Canciones</h1>
                 </div>
                 <div class="row">
-                    
-                        <%
-                            ArrayList <Video> misVideos = Archivos.leerArchivo();
-                            String categoria;
-                            if(request.getAttribute("categoria") != null){
-                                categoria = request.getAttribute("categoria").toString();
-                            }else{
-                                categoria = "";
-                            }
-                            
-                            for (Video v : misVideos) {
-                                if((categoria.equals(v.getCategoria())) || (categoria.equals(""))){
-                                    out.println("<div class=´'col-lg-4 col-md-6 mb-4' style='margin-right: 30px;'>");
-                                        out.println("<div class='service-item bg-white text-center mb-2 py-5 px-4'>");
-                                            out.println("<iframe width='300' height='169' src='https://www.youtube.com/embed/"+v.getUrl().replace("https://www.youtube.com/watch?v=", "")+"' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>");
-                                            out.println("<p class='m-0'>idVideo: " + v.getIdVideo() + "</p>");
-                                            out.println("<h5 class='mb-2'>"+ v.getTitulo() +"</h5>");
-                                            out.println("<p class='m-0'>Autor: " + v.getAutor() + "</p>");
-                                            out.println("<p class='m-0'>Año: " + v.getAnio() + "</p>");
-                                            out.println("<p class='m-0'>Categoria: " + v.getCategoria() + "</p>");
-                                            out.println("<p class='m-0'>Letra: " + v.getLetra() + "</p>");
+                    <%
+                        // LLamado al metodo leerArchivo de tipo ArrayList<Video> de la clase Archivos para mostrar los videos agregados en un listado de videos
+                        ArrayList<Video> misVideos = Archivos.leerArchivo();
+                        
+                        // Atributo categoria de tipo String
+                        String categoria;
 
-                                            out.println("<a href='" + v.getUrl() + "' target='_blank' class='btn btn-primary py-md-3 px-md-5 mt-2'>Ir al video</a>");
-                                        out.println("</div>");
-                                    out.println("</div>");
-                                }
+                        // Condicional if que evalua la categoria que escogio el usuario en caso de que este no sea nulo
+                        if (request.getAttribute("categoria") != null) {
+                            categoria = request.getAttribute("categoria").toString();
+                        } else {
+                            categoria = "";
+                        }
+
+                        // Itera en un ciclo forEach en el ArrayList misVideos donde estan todos los videos agregados
+                        for (Video v : misVideos) {
+                            // Condicional if que mustra unicamente los videos que coincidan con la categoria que digito el usuario
+                            if ((categoria.equals(v.getCategoria())) || (categoria.equals(""))) {
+                                out.println("<div class=´'col-lg-4 col-md-6 mb-4' style='margin-right: 30px;'>");
+                                out.println("<div class='service-item bg-white text-center mb-2 py-5 px-4'>");
+                                out.println("<iframe width='300' height='169' src='https://www.youtube.com/embed/" + v.getUrl().replace("https://www.youtube.com/watch?v=", "") + "' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>");
+                                out.println("<p class='m-0'>idVideo: " + v.getIdVideo() + "</p>");
+                                out.println("<h5 class='mb-2'>" + v.getTitulo() + "</h5>");
+                                out.println("<p class='m-0'>Autor: " + v.getAutor() + "</p>");
+                                out.println("<p class='m-0'>Año: " + v.getAnio() + "</p>");
+                                out.println("<p class='m-0'>Categoria: " + v.getCategoria() + "</p>");
+                                out.println("<p class='m-0'>Letra: " + v.getLetra() + "</p>");
+
+                                out.println("<a href='" + v.getUrl() + "' target='_blank' class='btn btn-primary py-md-3 px-md-5 mt-2'>Ir al video</a>");
+                                out.println("</div>");
+                                out.println("</div>");
                             }
-                        %>
-                    
+                        }
+                    %>
+
                 </div>
             </div>
         </div>
-        <center>
-            <a href='index.jsp' class='btn btn-primary py-md-3 px-md-5 mt-2'style="min-height: 60px" style='margin-right: 30px;'>Regresar</a>
-            <a href='agregarVideo.jsp' class='btn btn-primary py-md-3 px-md-5 mt-2' style="min-height: 60px">Agregar video</a>
-        </center>
-    </body>
+    <center>
+        <a href='index.jsp' class='btn btn-primary py-md-3 px-md-5 mt-2'style="min-height: 60px" style='margin-right: 30px;'>Regresar</a>
+        <a href='agregarVideo.jsp' class='btn btn-primary py-md-3 px-md-5 mt-2' style="min-height: 60px">Agregar video</a>
+    </center>
+</body>
 </html>

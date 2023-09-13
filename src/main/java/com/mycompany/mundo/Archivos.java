@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class Archivos {
 
     /**
-     * Metodo de escribirArchivo para persistencia
+     * Metodo de escribirArchivo para persistencia (Cuando se agregue un video se guardara en el archivo videosRegistrados)
      * @param misVideos
-     * @throws FileNotFoundException 
+     * @throws FileNotFoundException Excepción cuando el archivo no existe
      */
     public static void escribirArchivo(ArrayList<Video> misVideos) throws FileNotFoundException {
 //
@@ -38,7 +38,7 @@ public class Archivos {
 //        }
 
         // Crear el archivo de salida
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("videosRegistrados.dat"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("videosRegistrados.data"))) {
             // Escribir la lista de objetos Video en el archivo
             oos.writeObject(misVideos);
         } catch (IOException e) {
@@ -47,10 +47,10 @@ public class Archivos {
     }
 
     /**
-     * Metodo de leerArchivo para persistencia
+     * Metodo de leerArchivo para persistencia (Cuando inicie el progrmama leera el archivo videosRegistrados y los mostrara en el listado de videos)
      * @param misVideos
-     * @throws FileNotFoundException
-     * @throws IOException 
+     * @throws FileNotFoundException Excepción cuando el archivo no existe
+     * @throws IOException Excepción cuando hay problemas para leer el archivo 
      */
     public static void leerArchivo(ArrayList<Video> misVideos) throws FileNotFoundException, IOException {
 
@@ -87,7 +87,7 @@ public class Archivos {
 //            }
 //        }
 
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("videosRegistrados.dat"))) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("videosRegistrados.data"))) {
                 // Leer la lista de objetos Video desde el archivo binario
                 misVideos = (ArrayList<Video>) ois.readObject();
             } catch (FileNotFoundException e) {
@@ -98,10 +98,10 @@ public class Archivos {
     }
 
     /**
-     * Sobrecarga o polimorfismo
-     * @return Array List misVideos
-     * @throws FileNotFoundException
-     * @throws IOException 
+     * Sobrecarga o polimorfismo (Metodo leerArchivo de tipo ArrayList<Video>. Cuando inicie el programa leera el archivo videosRegistrados y los mostrara en el listado de videos)
+     * @return Array List misVideos (ArrayList donde estan guardados los videos agregados)
+     * @throws FileNotFoundException Excepción cuando el archivo no existe
+     * @throws IOException Excepción cuando hay problemas para leer el archivo
      */
     public static ArrayList<Video> leerArchivo() throws FileNotFoundException, IOException {
 
@@ -141,7 +141,7 @@ public class Archivos {
 //        // Retorna el ArrayList misVideos
 //        return misVideos;
             
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("videosRegistrados.dat"))) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("videosRegistrados.data"))) {
             // Leer la lista de objetos Video desde el archivo binario
             misVideos = (ArrayList<Video>) ois.readObject();
             } catch (FileNotFoundException e) {
