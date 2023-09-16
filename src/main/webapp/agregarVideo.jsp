@@ -99,7 +99,7 @@
                                         <div>
                                             <!-- Recibe los datos que digite el usuario con relación al id del video -->
                                             <input type="text" class="form-control p-4" name="idVideo" id="idVideo" placeholder="Id video"
-                                                   required="required" data-validation-required-message="Porfavor escriba el id de la canción" />
+                                                   required="required" data-validation-required-message="Porfavor escriba el id de la canción" required pattern="[0-9]+" title="Solo puede ingresar números en el id del video"/>
                                             <p class="help-block text-danger"></p>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@
                                         <div class="mb-3 mb-md-0">
                                             <!-- Recibe los datos que digite el usuario con relación al año de publicación del video -->
                                             <div class="date" name="anio" id="anio" data-target-input="nearest">
-                                                <input type="text" class="form-control p-4 datetimepicker-input" name="anio" placeholder="Año" data-target="#date1" data-toggle="datetimepicker"/>
+                                                <input type="text" class="form-control p-4 datetimepicker-input" name="anio" placeholder="Año" data-target="#date1" data-toggle="datetimepicker" required pattern="[0-9]+" title="Solo puede ingresar números en el año del video"/>
                                             </div>
                                         </div>
                                     </div>
